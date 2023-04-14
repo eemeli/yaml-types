@@ -23,8 +23,10 @@ const re = parse('!re /fo./g', { customTags: [regexp] })
 
 - `regexp` (`!re`) - [RegExp] values,
   using their default `/foo/flags` string representation.
+- `symbol` (`!symbol`) - [Shared Symbols], i.e. ones created with `Symbol.for()`
 
 [RegExp]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions
+[Shared Symbols]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol#shared_symbols_in_the_global_symbol_registry
 
 ## Customising Tag Names
 
