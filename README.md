@@ -29,15 +29,37 @@ const re = parse('!re /fo./g', { customTags: [regexp] })
 ## Customising Tag Names
 
 To use one of the types with a different tag identifier, set its `tag` value accordingly.
-For example, to extend the default namespace with `!!js/regexp` instead of using a locale `!re` tag for RegExp values:
+For example, to extend the default tag namespace with `!!js/regexp`
+instead of using a local `!re` tag for RegExp values:
 
 ```js
 import { stringify } from 'yaml'
 import { regexp } from 'yaml-types'
 
 const myregexp = { ...regexp, tag: 'tag:yaml.org,2002:js/regexp' }
-const str = stringify(/fo./m, { customTags: [myregexp] })
-// '!!js/regexp /fo./m\n'
+stringify(/fo./m, { customTags: [myregexp] })
+```
+
+```yaml
+!!js/regexp /fo./m
+```
+
+To use a named tag handle like `!js!regexp`, a few more steps are required:
+
+```js
+import { Document } from 'yaml'
+import { regexp } from 'yaml-types'
+
+const myregexp = { ...regexp, tag: 'tag:js:regexp' }
+const doc = new Document(/fo./m, { customTags: [myregexp] })
+doc.directives.tags['!js!'] = 'tag:js:'
+doc.toString()
+```
+
+```yaml
+%TAG !js! tag:js:
+---
+!js!regexp /fo./m
 ```
 
 ## Contributing
