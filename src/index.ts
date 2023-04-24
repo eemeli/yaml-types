@@ -1,2 +1,2 @@
 export { regexp } from './regexp.js'
-export { symbol } from './symbol.js'
+export { sharedSymbol } from './symbol.js'
