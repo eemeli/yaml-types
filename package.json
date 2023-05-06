@@ -29,13 +29,16 @@
     "prestart": "tsc",
     "start": "node -i -e 'YAML=require(\"yaml\");YT=require(\"./dist/index.js\")'",
     "pretest": "tsc",
-    "test": "tap --test-regex '\\.test\\.js$'"
+    "test": "tap"
   },
   "prettier": {
     "arrowParens": "avoid",
     "semi": false,
     "singleQuote": true,
     "trailingComma": "none"
+  },
+  "tap": {
+    "test-regex": "\\.test\\.js"
   },
   "engines": {
     "node": ">= 16",
