@@ -26,10 +26,12 @@ const re = parse('!re /fo./g', { customTags: [regexp] })
 - `sharedSymbol` (`!symbol/shared`) - [Shared Symbols], i.e. ones created with `Symbol.for()`
 - `symbol` (`!symbol`) - [Unique Symbols]
 - `nullobject` (`!nullobject) - Object with a `null` prototype
+- `error` (`!error`) - JavaScript [Error] objects
 
 [RegExp]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions
 [Shared Symbols]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol#shared_symbols_in_the_global_symbol_registry
 [Unique Symbols]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol
+[Error]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
 
 ## Customising Tag Names
 
