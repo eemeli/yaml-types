@@ -27,11 +27,22 @@ const re = parse('!re /fo./g', { customTags: [regexp] })
 - `symbol` (`!symbol`) - [Unique Symbols]
 - `nullobject` (`!nullobject) - Object with a `null` prototype
 - `error` (`!error`) - JavaScript [Error] objects
+- `classTag` (`!class`) - JavaScript [Class] values
+- `functionTag` (`!function`) - JavaScript [Function] values
+  (will also be used to stringify Class values, unless the
+  `classTag` tag is loaded ahead of `functionTag`)
+
+The function and class values created by parsing `!function` and
+`!class` tags will not actually replicate running code, but
+rather no-op function/class values with matching name and
+`toString` properties.
 
 [RegExp]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions
 [Shared Symbols]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol#shared_symbols_in_the_global_symbol_registry
 [Unique Symbols]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol
 [Error]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
+[Function]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions
+[Class]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
 
 ## Customising Tag Names
 
