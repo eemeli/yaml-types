@@ -21,35 +21,35 @@ const re = parse('!re /fo./g', { customTags: [regexp] })
 
 ## Available Types
 
-- `regexp` (`!re`) - [RegExp] values, using their default
-  `/foo/flags` string representation.
-- `sharedSymbol` (`!symbol/shared`) - [Shared Symbols], i.e. ones
-  created with `Symbol.for()`
-- `symbol` (`!symbol`) - [Unique Symbols]
-- `nullobject` (`!nullobject) - Object with a `null` prototype
-- `error` (`!error`) - JavaScript [Error] objects
+- `bigint` (`!bigint`) - JavaScript [BigInt] values.
+  Note: in order to use this effectively,
+  a function must be provided as `customTags` in order to prepend the `bigint` tag,
+  or else the built-in `!!int` tags will take priority.
+  See [bigint.test.ts](./src/bigint.test.ts) for examples.
 - `classTag` (`!class`) - JavaScript [Class] values
+- `error` (`!error`) - JavaScript [Error] objects
 - `functionTag` (`!function`) - JavaScript [Function] values
-  (will also be used to stringify Class values, unless the
-  `classTag` tag is loaded ahead of `functionTag`)
-- `bigint` (`!bigint`) - JavaScript [BigInt] values. Note: in
-  order to use this effectively, a function must be provided as
-  `customTags` in order to prepend the `bigint` tag, or else the
-  built-in `!!int` tags will take priority. See
-  [bigint.test.ts](./src/bigint.test.ts) for examples.
+  (will also be used to stringify Class values,
+  unless the `classTag` tag is loaded ahead of `functionTag`)
+- `nullobject` (`!nullobject) - Object with a `null` prototype
+- `regexp` (`!re`) - [RegExp] values,
+  using their default `/foo/flags` string representation.
+- `sharedSymbol` (`!symbol/shared`) - [Shared Symbols],
+  i.e. ones created with `Symbol.for()`
+- `symbol` (`!symbol`) - [Unique Symbols]
 
 The function and class values created by parsing `!function` and
 `!class` tags will not actually replicate running code, but
 rather no-op function/class values with matching name and
 `toString` properties.
 
+[BigInt]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
+[Class]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
+[Error]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
+[Function]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions
 [RegExp]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions
 [Shared Symbols]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol#shared_symbols_in_the_global_symbol_registry
 [Unique Symbols]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol
-[Error]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
-[Function]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions
-[Class]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
-[BigInt]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
 
 ## Customising Tag Names
 
