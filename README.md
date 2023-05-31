@@ -31,7 +31,7 @@ const re = parse('!re /fo./g', { customTags: [regexp] })
 - `functionTag` (`!function`) - JavaScript [Function] values
   (will also be used to stringify Class values,
   unless the `classTag` tag is loaded ahead of `functionTag`)
-- `nullobject` (`!nullobject) - Object with a `null` prototype
+- `nullobject` (`!nullobject`) - Object with a `null` prototype
 - `regexp` (`!re`) - [RegExp] values,
   using their default `/foo/flags` string representation.
 - `sharedSymbol` (`!symbol/shared`) - [Shared Symbols],
@@ -59,24 +59,24 @@ instead of using a local `!re` tag for RegExp values:
 
 ```js
 import { stringify } from 'yaml'
-import { regexp } from 'yaml-types'
+import { symbol } from 'yaml-types'
 
-const myregexp = { ...regexp, tag: 'tag:yaml.org,2002:js/regexp' }
-stringify(/fo./m, { customTags: [myregexp] })
+const mysymbol = { ...symbol, tag: 'tag:yaml.org,2002:js/symbol' }
+stringify(Symbol('foo'), { customTags: [mysymbol] })
 ```
 
 ```yaml
-!!js/regexp /fo./m
+!!js/symbol foo
 ```
 
-To use a named tag handle like `!js!regexp`, a few more steps are required:
+To use a named tag handle like `!js!symbol`, a few more steps are required:
 
 ```js
 import { Document } from 'yaml'
-import { regexp } from 'yaml-types'
+import { symbol } from 'yaml-types'
 
-const myregexp = { ...regexp, tag: 'tag:js:regexp' }
-const doc = new Document(/fo./m, { customTags: [myregexp] })
+const mysymbol = { ...symbol, tag: 'tag:js:symbol' }
+const doc = new Document(Symbol('foo'), { customTags: [mysymbol] })
 doc.directives.tags['!js!'] = 'tag:js:'
 doc.toString()
 ```
@@ -84,7 +84,7 @@ doc.toString()
 ```yaml
 %TAG !js! tag:js:
 ---
-!js!regexp /fo./m
+!js!symbol foo
 ```
 
 ## Contributing
