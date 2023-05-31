@@ -54,8 +54,8 @@ rather no-op function/class values with matching name and
 ## Customising Tag Names
 
 To use one of the types with a different tag identifier, set its `tag` value accordingly.
-For example, to extend the default tag namespace with `!!js/regexp`
-instead of using a local `!re` tag for RegExp values:
+For example, to extend the default tag namespace with `!!js/symbol`
+instead of using a local `!symbol` tag for Symbol values:
 
 ```js
 import { stringify } from 'yaml'
