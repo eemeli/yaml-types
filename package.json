@@ -1,6 +1,6 @@
 {
   "name": "yaml-types",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "license": "ISC",
   "author": "Eemeli Aro <eemeli@gmail.com>",
   "repository": "github:eemeli/yaml-types",
