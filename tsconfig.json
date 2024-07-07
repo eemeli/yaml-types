@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
     "declaration": true,
-    "module": "CommonJS",
+    "module": "Node16",
     "moduleResolution": "node16",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "outDir": "dist",
     "resolvePackageJsonExports": true,
     "rootDir": "src",
+    "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
     "target": "ES2020"

@@ -21,16 +21,16 @@ class YAMLErrorObject extends YAMLMap {
       name === 'EvalError'
         ? EvalError
         : name === 'RangeError'
-        ? RangeError
-        : name === 'ReferenceError'
-        ? ReferenceError
-        : name === 'SyntaxError'
-        ? SyntaxError
-        : name === 'TypeError'
-        ? TypeError
-        : name === 'URIError'
-        ? URIError
-        : Error
+          ? RangeError
+          : name === 'ReferenceError'
+            ? ReferenceError
+            : name === 'SyntaxError'
+              ? SyntaxError
+              : name === 'TypeError'
+                ? TypeError
+                : name === 'URIError'
+                  ? URIError
+                  : Error
     const er = new Cls(message)
     if (Cls.name !== name) {
       Object.defineProperty(er, 'name', {
