@@ -26,17 +26,22 @@ const re = parse('!re /fo./g', { customTags: [regexp] })
   a function must be provided as `customTags` in order to prepend the `bigint` tag,
   or else the built-in `!!int` tags will take priority.
   See [bigint.test.ts](./src/bigint.test.ts) for examples.
+- `binary` (`!!binary`) - JavaScript [Uint8Array], one of the YAML 1.1 tags
 - `classTag` (`!class`) - JavaScript [Class] values
 - `error` (`!error`) - JavaScript [Error] objects
 - `functionTag` (`!function`) - JavaScript [Function] values
   (will also be used to stringify Class values,
   unless the `classTag` tag is loaded ahead of `functionTag`)
 - `nullobject` (`!nullobject`) - Object with a `null` prototype
+- `omap` (`!!omap`) - JavaScript [Map], one of the YAML 1.1 tags
+- `pairs` (`!!pairs`) - Ordered sequence of key-value [pairs], one of the YAML 1.1 tags
 - `regexp` (`!re`) - [RegExp] values,
   using their default `/foo/flags` string representation.
+- `set` (`!!set`) - JavaScript [Set], one of the YAML 1.1 tags
 - `sharedSymbol` (`!symbol/shared`) - [Shared Symbols],
   i.e. ones created with `Symbol.for()`
 - `symbol` (`!symbol`) - [Unique Symbols]
+- `timestamp` (`!!timestamp`) - JavaScript [Date], one of the YAML 1.1 tags
 
 The function and class values created by parsing `!function` and
 `!class` tags will not actually replicate running code, but
@@ -45,11 +50,16 @@ rather no-op function/class values with matching name and
 
 [BigInt]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
 [Class]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
+[Date]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
 [Error]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
 [Function]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions
+[Map]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
 [RegExp]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions
+[Set]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
 [Shared Symbols]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol#shared_symbols_in_the_global_symbol_registry
+[Uint8Array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array
 [Unique Symbols]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol
+[pairs]: https://yaml.org/type/pairs.html
 
 ## Customising Tag Names
 
