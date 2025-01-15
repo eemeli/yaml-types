@@ -46,7 +46,23 @@ const re = parse('!re /fo./g', { customTags: [regexp] })
 The function and class values created by parsing `!function` and
 `!class` tags will not actually replicate running code, but
 rather no-op function/class values with matching name and
-`toString` properties.
+`toString` properties. For example the `yaml`:
+```yaml
+!function |-
+"foo"
+function foo() { console.log("hello") }
+```
+could be parsed and restringified as below:
+```js
+const foo = YAML.parse(yaml, { customTags: [functionTag] }) // [Function: foo] { toString: [Function (anonymous)] }
+foo() // undefined, no-op
+foo.toString() === 'function foo() { console.log("hello") }' // true
+// except for minor whitespace differences, below is true
+yaml == YAML.stringify(function foo() { console.log("hello") }, { customTags: [functionTag] })
+```
+
+For more tag-specific syntax and usage examples check out the `*.test.ts` files at https://github.com/eemeli/yaml-types/tree/main/src.
+
 
 [BigInt]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
 [Class]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
